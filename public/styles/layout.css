@@ -28,10 +28,49 @@ body {
  */
 
 main {
+  margin: 120px auto;
+  margin-bottom: 0;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.tweet {
+  border: 5px solid #5e6572;
+  height: 250px;
+  margin: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tweet header {
+  margin: 25px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet p {
+  margin: 25px;
+  padding-bottom: 50px;
+  border-bottom: 5px solid #5e6572;
+}
+
+.tweet footer {
+  margin: 25px;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 80%;
+}
+
+.icons i:hover {
+  color: yellow;
+}
+
+.tweet:hover {
+  box-shadow: 5px 5px #c8cbdf;
 }

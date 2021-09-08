@@ -1,4 +1,7 @@
-header {
+header#display-user {
+  position: relative;
+  top: 120px;
+  width: 100%;
   height: 400px;
   display: flex;
   flex-direction: column;
