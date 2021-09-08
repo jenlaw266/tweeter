@@ -41,7 +41,7 @@
       <i class="fas fa-angle-double-down"></i>
     </div>
   </nav>
-  <header id="display-user">
+  <header class="display-user">
     <div>
       <img src="/images/profile-hex.png">
     </div>
@@ -56,15 +56,15 @@
       <h2>Compose Tweet</h2>
       <form method="POST" action="/tweets/">
 
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <textarea name="text" class="tweet-text" placeholder="What are you humming about?"></textarea>
         <div class="space-between">
-          <button id="tweet" type="submit">Tweet</button>
+          <button class="tweet-button" type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
     </section>
 
-    <section id="tweet-container">
+    <section class="tweet-container">
       <article class="tweet">
         <header>
           <label>Newton</label>
