@@ -45,10 +45,17 @@ main {
 }
 
 .tweet header {
-  margin: 25px;
-  margin-bottom: 0px;
   display: flex;
   justify-content: space-between;
+}
+
+.tweet header img {
+  width: 50px;
+}
+
+.tweet header label {
+  margin: 25px;
+  margin-bottom: 0;
 }
 
 .tweet p {
