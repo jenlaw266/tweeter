@@ -1,13 +1,13 @@
 $(document).ready(function () {
-  $("#tweet-text").on("input", function () {
-    const $countingDown = $(this).parent().find(".counter");
+  $(".tweet-text").on("input", function () {
+    const $count = $(this).parent().find(".counter");
     let charLimit = 140;
-    let remainingChar = charLimit - $(this).val().length; //should I re-name $remainingChar
+    let remainingChar = charLimit - $(this).val().length;
     if (remainingChar >= 0) {
-      $countingDown.css("color", "");
+      $count.css("color", "");
     } else {
-      $countingDown.css("color", "red");
+      $count.css("color", "red");
     }
-    $countingDown.text(remainingChar);
+    $count.text(remainingChar);
   });
 });
