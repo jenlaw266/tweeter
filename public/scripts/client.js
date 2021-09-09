@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(() => {
-  const getTweets = () => {
+  const loadTweets = () => {
     $.ajax({
       url: "/tweets",
       method: "GET",
@@ -46,14 +46,20 @@ $(() => {
   const $form = $("#input-new-tweet");
   $form.on("submit", function (event) {
     event.preventDefault();
-    console.log("the tweet has been submitted");
 
     const serializedData = $(this).serialize();
-    console.log(serializedData);
+
+    if (!$(".tweet-text").val()) {
+      alert("no data");
+      return;
+    }
+    if ($(".tweet-text").val().length > 140) {
+      alert("tweet is too long");
+      return;
+    }
 
     $.post("/tweets", serializedData, (response) => {
-      console.log(response);
-      getTweets();
+      loadTweets();
     });
   });
 
@@ -66,5 +72,5 @@ $(() => {
     }
   };
 
-  getTweets();
+  loadTweets();
 });
