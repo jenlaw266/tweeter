@@ -1,8 +1,8 @@
 # Tweeter Project
 
-!["desktop"](https://github.com/jenlaw266/tinyapp/blob/master/docs/desktop.png?raw=true)
+!["desktop"](https://github.com/jenlaw266/tweeter/blob/master/docs/desktop.png?raw=true)
 
-!["mobile"](https://github.com/jenlaw266/tinyapp/blob/master/docs/mobile.png?raw=true)
+!["mobile"](https://github.com/jenlaw266/tweeter/blob/master/docs/mobile.png?raw=true)
 
 Tweeter is a simple, single-page Twitter clone.
 
