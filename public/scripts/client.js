@@ -12,21 +12,6 @@ $(() => {
   loadTweets();
 });
 
-//load tweets on the page
-const loadTweets = () => {
-  $.ajax({
-    url: "/tweets",
-    method: "GET",
-    dataType: "json",
-    success: (tweets) => {
-      renderTweets(tweets);
-    },
-    error: (err) => {
-      console.log("error: ", err);
-    },
-  });
-};
-
 //create one textbox for one tweet
 const createTweetElement = (tweet) => {
   const $tweet = `
@@ -60,6 +45,21 @@ const renderTweets = (tweets) => {
   for (const tweet of tweets) {
     $tweetContainer.prepend(createTweetElement(tweet));
   }
+};
+
+//load tweets on the page
+const loadTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+    dataType: "json",
+    success: (tweets) => {
+      renderTweets(tweets);
+    },
+    error: (err) => {
+      console.log("error: ", err);
+    },
+  });
 };
 
 //post new tweet & potential errors message
