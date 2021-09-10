@@ -41,7 +41,6 @@ main {
   margin: 50px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   word-wrap: break-word;
 }
 
@@ -83,4 +82,10 @@ main {
 
 .tweet:hover {
   box-shadow: 5px 5px #c8cbdf;
+}
+
+#up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

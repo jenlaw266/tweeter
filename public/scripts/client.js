@@ -3,24 +3,33 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(() => {
-  const loadTweets = () => {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-      dataType: "json",
-      success: (tweets) => {
-        console.log("tweets here", tweets);
-        renderTweets(tweets);
-      },
-      error: (err) => {
-        console.log("error: ", err);
-      },
-    });
-  };
 
-  const createTweetElement = (tweet) => {
-    const $tweet = `
+$(() => {
+  //new tweet
+  const $form = $("#input-new-tweet");
+  $form.on("submit", postTweet);
+
+  loadTweets();
+});
+
+//load tweets on the page
+const loadTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    method: "GET",
+    dataType: "json",
+    success: (tweets) => {
+      renderTweets(tweets);
+    },
+    error: (err) => {
+      console.log("error: ", err);
+    },
+  });
+};
+
+//create one textbox for one tweet
+const createTweetElement = (tweet) => {
+  const $tweet = `
       <article class="tweet">
         <header>
           <div>
@@ -40,37 +49,44 @@ $(() => {
         </footer>
       </article>
     `;
-    return $tweet;
-  };
+  return $tweet;
+};
 
-  const $form = $("#input-new-tweet");
-  $form.on("submit", function (event) {
-    event.preventDefault();
+//creating many display textboxes for tweets from database
+const renderTweets = (tweets) => {
+  const $tweetContainer = $("#tweets-container");
+  $tweetContainer.empty();
 
-    const serializedData = $(this).serialize();
+  for (const tweet of tweets) {
+    $tweetContainer.prepend(createTweetElement(tweet));
+  }
+};
 
-    if (!$(".tweet-text").val()) {
-      alert("no data");
-      return;
-    }
-    if ($(".tweet-text").val().length > 140) {
-      alert("tweet is too long");
-      return;
-    }
+//post new tweet & potential errors message
+const postTweet = function (event) {
+  event.preventDefault();
 
-    $.post("/tweets", serializedData, (response) => {
-      loadTweets();
-    });
+  $(".error").slideUp();
+  const serializedData = $(this).serialize();
+
+  if (!$(".tweet-text").val()) {
+    const $error = $(".error");
+    $error.html('<i class="fas fa-exclamation-circle"></i> Error: empty tweet');
+    $error.slideDown("fast");
+    return;
+  }
+  if ($(".tweet-text").val().length > 140) {
+    const $error = $(".error");
+    $error.html(
+      '<i class="fas fa-exclamation-circle"></i> Error: max character length 140'
+    );
+    $error.slideDown("fast");
+    return;
+  }
+
+  $.post("/tweets", serializedData, () => {
+    loadTweets();
+    $(".tweet-text").val("");
+    $(".counter").val("140");
   });
-
-  //taking array of tweet objects and appending to #tweets-container
-  const renderTweets = (tweets) => {
-    const $tweetContainer = $("#tweets-container");
-
-    for (const tweet of tweets) {
-      $tweetContainer.prepend(createTweetElement(tweet));
-    }
-  };
-
-  loadTweets();
-});
+};

@@ -24,3 +24,15 @@
 .counter {
   font-family: "Bungee", cursive;
 }
+
+.error {
+  display: none;
+  font-size: 18px;
+  background-color: #ffbab9;
+  color: darkred;
+  width: 100%;
+  padding-left: 10px;
+  margin: 10px 0px;
+  line-height: 2;
+  border: solid red;
+}
