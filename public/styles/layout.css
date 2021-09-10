@@ -89,14 +89,20 @@ main {
   box-shadow: 5px 5px #c8cbdf;
 }
 
-/*
 #up {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 0.5em;
+  right: 0.5em;
+  font-size: 2em;
+  color: red;
+  /* up's z-index just needs to be higher than all the others */
+  z-index: 10;
+  display: none;
 }
 
-*/
+#up:hover {
+  color: yellow;
+}
 
 @media only screen and (min-width: 768px) {
   body {
