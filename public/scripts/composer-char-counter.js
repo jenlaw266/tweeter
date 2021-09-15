@@ -9,9 +9,8 @@ const counter = function () {
   let remainingChar = charLimit - $(this).val().length;
   if (remainingChar < 0) {
     $count.css("color", "red");
-    return;
+  } else {
+    $count.css("color", "");
   }
-  $count.css("color", "");
-
   $count.text(remainingChar);
 };
